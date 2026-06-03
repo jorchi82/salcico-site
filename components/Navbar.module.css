@@ -1,0 +1,122 @@
+/* ---- Default: transparent header fused into the hero ---- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 22px var(--gutter);
+  transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav {
+  width: 100%;
+  max-width: var(--maxw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  backdrop-filter: none;
+  transition: max-width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.45s ease, border-color 0.45s ease, padding 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* ---- Scrolled: contracts into a floating pill ---- */
+.pill {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* Light glass pill — pops against the dark sections */
+.pill .nav {
+  max-width: 920px;
+  background: rgba(244, 246, 248, 0.72);
+  backdrop-filter: blur(16px) saturate(160%);
+  border-color: rgba(15, 22, 32, 0.18);
+  padding: 10px 14px 10px 20px;
+  /* Layered shadow + faint ring so the pill reads on light backgrounds too */
+  box-shadow: 0 14px 44px rgba(10, 13, 17, 0.32),
+    0 0 0 1px rgba(15, 22, 32, 0.05);
+}
+
+/* ---- Logo (two stacked variants crossfading) ---- */
+.logo {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.logoImg {
+  height: 30px;
+  width: auto;
+  display: block;
+  transition: height 0.45s ease, opacity 0.4s ease;
+}
+/* Dark variant sits on top of the light one and fades in on the pill */
+.logoDark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.pill .logoLight {
+  opacity: 0;
+}
+.pill .logoDark {
+  opacity: 1;
+}
+/* Trim the logo a touch in the condensed pill state */
+.pill .logoImg {
+  height: 26px;
+}
+
+/* ---- Links ---- */
+.links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.links a {
+  opacity: 0.92;
+  transition: opacity 0.2s ease, color 0.4s ease;
+}
+.links a:hover {
+  opacity: 1;
+}
+/* Dark link text on the light pill */
+.pill .links a {
+  color: #0f1620;
+}
+
+/* ---- CTA ---- */
+.cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 11px 20px;
+  border-radius: 999px;
+  background: var(--accent);
+  transition: background 0.25s ease;
+  white-space: nowrap;
+}
+.cta:hover {
+  background: var(--accent-bright);
+}
+
+@media (max-width: 860px) {
+  .links {
+    display: none;
+  }
+  .pill .nav {
+    max-width: 100%;
+  }
+}

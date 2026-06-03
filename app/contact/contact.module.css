@@ -1,0 +1,124 @@
+.wrap {
+  padding-block: clamp(120px, 16vh, 200px) clamp(60px, 10vh, 120px);
+  min-height: 100svh;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+}
+.intro {
+  position: sticky;
+  top: 120px;
+}
+.channels {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.channelMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.channelMeta a {
+  color: var(--accent-bright);
+}
+
+/* ---- Form card ---- */
+.formCard {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 44px);
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.field > span {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 16px;
+  color: var(--fg);
+  font: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #5d6874;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 134, 184, 0.2);
+}
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.submit {
+  align-self: flex-start;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+.submit:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+}
+.note {
+  font-size: 13px;
+  color: var(--muted);
+}
+.note a {
+  color: var(--accent-bright);
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .intro {
+    position: static;
+  }
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

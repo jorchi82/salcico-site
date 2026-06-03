@@ -1,0 +1,451 @@
+/* ---------------- HERO ---------------- */
+.hero {
+  position: relative;
+  padding-block: clamp(88px, 12vh, 130px) clamp(40px, 8vh, 80px);
+}
+
+/* Rounded-rectangle media frame, like the final-CTA card */
+.heroFrame {
+  position: relative;
+  min-height: min(82svh, 760px);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  padding: clamp(28px, 4vw, 56px);
+}
+
+.heroMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Static frame extracted from the video — the resting state */
+.heroPoster {
+  position: absolute;
+  inset: 0;
+  /* Real still extracted from the video, with the steel gradient as a
+     fallback layered beneath it. */
+  background-image:
+    url("/hero/hero-poster.jpg"),
+    radial-gradient(60% 80% at 78% 18%, rgba(79, 134, 184, 0.35), transparent 60%),
+    radial-gradient(50% 60% at 12% 90%, rgba(28, 46, 63, 0.9), transparent 70%),
+    linear-gradient(180deg, #0d1620 0%, #0a0d11 100%);
+  background-size: cover;
+  background-position: center;
+}
+
+.heroVideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 1.1s ease;
+}
+.heroVideoHidden {
+  opacity: 0;
+}
+
+/* Steel-blue color treatment over the footage */
+.heroTint {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(70% 90% at 80% 15%, rgba(79, 134, 184, 0.30), transparent 62%),
+    linear-gradient(180deg, rgba(10, 13, 17, 0.10) 0%, rgba(28, 46, 63, 0.35) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* Bottom-left contrast scrim so the headline always reads */
+.heroScrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(10, 13, 17, 0.82) 0%,
+    rgba(10, 13, 17, 0.45) 38%,
+    rgba(10, 13, 17, 0) 70%
+  );
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+}
+.heroTitle {
+  text-wrap: balance;
+}
+.heroTitle > span {
+  display: block;
+}
+.heroTitle .accentDot {
+  color: var(--accent-bright);
+}
+
+/* Latest / quote card, like Wolverine's annual-report card */
+.heroCard {
+  width: min(360px, 80vw);
+  background: rgba(13, 17, 23, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.3s ease, transform 0.3s ease,
+    background 0.3s ease;
+}
+.heroCard:hover {
+  border-color: var(--accent);
+  background: rgba(13, 17, 23, 0.78);
+  transform: translateY(-3px);
+}
+.heroCardImg {
+  height: 150px;
+  border-radius: 10px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.heroCardLabel {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+.heroCardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.heroCardArrow {
+  color: var(--accent-bright);
+  transition: transform 0.3s ease;
+  flex: none;
+}
+.heroCard:hover .heroCardArrow {
+  transform: translateX(6px);
+}
+
+@media (max-width: 860px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+  }
+  .heroCard {
+    display: none;
+  }
+}
+
+/* ---------------- ABOUT ---------------- */
+.about {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+.aboutBody {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+@media (max-width: 860px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- DIVISIONS ---------------- */
+.divHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.divGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.divCard {
+  position: relative;
+  background: var(--bg);
+  padding: 38px 32px 44px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+.divCard:hover {
+  background: var(--bg-elev);
+}
+/* Full-bleed image banner at the top of each card */
+.divCardImg {
+  margin: -38px -32px 8px;
+  height: 168px;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  /* keep it cohesive with the dark UI: cool steel cast + bottom fade */
+  box-shadow: inset 0 -60px 60px -30px var(--bg);
+}
+.divCard:hover .divCardImg {
+  transform: scale(1.05);
+}
+.divNum {
+  font-size: 13px;
+  color: var(--accent-bright);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.divName {
+  font-family: var(--font-display, system-ui), sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  margin-top: auto;
+}
+.divDesc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+@media (max-width: 860px) {
+  .divGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Staggered entrance for the division cards (divGrid is a Reveal target) */
+.divGrid > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.divGrid:global(.in) > * {
+  opacity: 1;
+  transform: none;
+}
+.divGrid:global(.in) > *:nth-child(1) { transition-delay: 0.05s; }
+.divGrid:global(.in) > *:nth-child(2) { transition-delay: 0.12s; }
+.divGrid:global(.in) > *:nth-child(3) { transition-delay: 0.19s; }
+.divGrid:global(.in) > *:nth-child(4) { transition-delay: 0.26s; }
+.divGrid:global(.in) > *:nth-child(5) { transition-delay: 0.33s; }
+.divGrid:global(.in) > *:nth-child(6) { transition-delay: 0.40s; }
+@media (prefers-reduced-motion: reduce) {
+  .divGrid > * { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------------- REACH / STATS (light breathing block) ---------------- */
+.reach {
+  background: #f4f6f8;
+  border-radius: 24px;
+  padding: clamp(48px, 7vw, 88px);
+  color: #0f1620;
+}
+/* Re-color the global type tokens inside the light block */
+.reach :global(.h2) {
+  color: #0f1620;
+}
+.reach :global(.eyebrow) {
+  color: var(--accent);
+}
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 56px;
+}
+.stat {
+  padding: 8px 28px;
+  border-left: 1px solid rgba(28, 46, 63, 0.14);
+}
+.stat:first-child {
+  padding-left: 0;
+  border-left: none;
+}
+.stat :global(.num) {
+  font-family: var(--font-display, system-ui), sans-serif;
+  font-size: clamp(64px, 8vw, 120px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+.stat :global(.lab) {
+  margin-top: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5a6a7a;
+}
+@media (max-width: 760px) {
+  .stat {
+    padding: 8px 0;
+    border-left: none;
+  }
+}
+@media (max-width: 760px) {
+  .statGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+}
+
+/* ---------------- CLIENTS ---------------- */
+.logoRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 48px;
+}
+.logoCell {
+  background: var(--bg);
+  height: 150px;
+  display: grid;
+  place-items: center;
+  padding: 28px 32px;
+}
+/* Client logos: normalize to a uniform white tint so mixed brand
+   colors read cleanly on the dark grid; lift on hover. */
+.logoImg {
+  max-height: 52px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+.logoCell:hover .logoImg {
+  opacity: 1;
+}
+@media (max-width: 760px) {
+  .logoRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .logoCell {
+    height: 120px;
+    padding: 22px;
+  }
+}
+
+/* Staggered entrance for client logos */
+.clientsReveal .logoCell {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.clientsReveal:global(.in) .logoCell {
+  opacity: 1;
+  transform: none;
+}
+.clientsReveal:global(.in) .logoCell:nth-child(1) { transition-delay: 0.06s; }
+.clientsReveal:global(.in) .logoCell:nth-child(2) { transition-delay: 0.12s; }
+.clientsReveal:global(.in) .logoCell:nth-child(3) { transition-delay: 0.18s; }
+.clientsReveal:global(.in) .logoCell:nth-child(4) { transition-delay: 0.24s; }
+.clientsReveal:global(.in) .logoCell:nth-child(5) { transition-delay: 0.30s; }
+.clientsReveal:global(.in) .logoCell:nth-child(6) { transition-delay: 0.36s; }
+@media (prefers-reduced-motion: reduce) {
+  .clientsReveal .logoCell { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------------- FINAL CTA ---------------- */
+.finalCta {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: clamp(60px, 10vw, 130px) clamp(32px, 6vw, 80px);
+  background:
+    radial-gradient(70% 120% at 85% 20%, rgba(79, 134, 184, 0.45), transparent 60%),
+    linear-gradient(120deg, #0d1620, #1c2e3f);
+}
+.finalInner {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ---------------- FOOTER (light) ---------------- */
+.footer {
+  background: #f4f6f8;
+  color: #0f1620;
+  margin-top: clamp(40px, 8vh, 96px);
+  border-radius: 28px 28px 0 0;
+  padding-block: clamp(56px, 8vw, 88px) 40px;
+}
+.footTop {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+.footCol h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+.footCol a,
+.footCol p {
+  display: block;
+  font-size: 14px;
+  color: #44525f;
+  margin-bottom: 10px;
+}
+.footCol a {
+  transition: color 0.2s ease;
+}
+.footCol a:hover {
+  color: var(--accent);
+}
+.footLogo {
+  height: 40px;
+  width: auto;
+  display: block;
+  margin-bottom: 18px;
+}
+.footLegal {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(15, 22, 32, 0.12);
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #6a7884;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 860px) {
+  .footTop {
+    grid-template-columns: 1fr 1fr;
+  }
+}
