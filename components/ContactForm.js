@@ -1,19 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../app/contact/contact.module.css";
 
 const DIVISIONS = [
   "Oil & Gas",
+  "Supplies",
   "Maintenance",
   "Logistics",
-  "Supplies",
   "Green",
+  "Cybersecurity",
   "Other",
 ];
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [division, setDivision] = useState("");
+
+  // Preselect the division when arriving from /contact?division=Oil%20%26%20Gas
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get("division");
+    if (param && DIVISIONS.includes(param)) setDivision(param);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +63,11 @@ export default function ContactForm() {
 
       <label className={styles.field}>
         <span>Division of interest</span>
-        <select name="division" defaultValue="">
+        <select
+          name="division"
+          value={division}
+          onChange={(e) => setDivision(e.target.value)}
+        >
           <option value="" disabled>
             Select a division…
           </option>

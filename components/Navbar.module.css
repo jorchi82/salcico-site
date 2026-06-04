@@ -104,12 +104,12 @@
   text-transform: uppercase;
   padding: 11px 20px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--red);
   transition: background 0.25s ease;
   white-space: nowrap;
 }
 .cta:hover {
-  background: var(--accent-bright);
+  background: var(--red-bright);
 }
 
 @media (max-width: 860px) {

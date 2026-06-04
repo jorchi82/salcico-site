@@ -87,7 +87,7 @@
 }
 .submit {
   align-self: flex-start;
-  background: var(--accent);
+  background: var(--red);
   color: #fff;
   font-size: 14px;
   font-weight: 700;
@@ -100,7 +100,7 @@
   transition: background 0.25s ease, transform 0.25s ease;
 }
 .submit:hover {
-  background: var(--accent-bright);
+  background: var(--red-bright);
   transform: translateY(-2px);
 }
 .note {
