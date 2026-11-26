@@ -20,3 +20,6 @@ npm-debug.log*
 
 # netlify
 .netlify
+
+# internal notes (contain pricing)
+RESUMEN-CONVERSACION.md

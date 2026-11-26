@@ -5,7 +5,7 @@ import styles from "./contact.module.css";
 export const metadata = {
   title: "Contact — Get a Quote | SALCICO Group",
   description:
-    "Request a quote from SALCICO Group. Just-in-time industrial supply, maintenance and logistics for oil & gas.",
+    "Request a project quote from SALCICO Group. Project supply, maintenance and logistics for oil & gas, mining and energy.",
 };
 
 export default function ContactPage() {
@@ -40,8 +40,8 @@ export default function ContactPage() {
                   Chat on WhatsApp →
                 </a>
                 <div className={styles.channelMeta}>
-                  <span>Mexico City · Houston · Tokyo</span>
-                  <a href="mailto:ventas@salcico.com">ventas@salcico.com</a>
+                  <span>Mexico City · Houston · Panama</span>
+                  <a href="mailto:sales@salcico.com">sales@salcico.com</a>
                 </div>
               </div>
             </div>

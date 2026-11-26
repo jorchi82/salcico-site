@@ -33,7 +33,7 @@ export default function ContactForm() {
     const body = encodeURIComponent(
       `Name: ${data.name}\nCompany: ${data.company}\nEmail: ${data.email}\nPhone: ${data.phone}\nDivision: ${data.division}\n\nMessage:\n${data.message}`
     );
-    window.location.href = `mailto:ventas@salcico.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:sales@salcico.com?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -85,7 +85,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
-          placeholder="Tell us about your requirement, timeline and location…"
+          placeholder="Tell us about your project: scope, timeline and site location…"
         />
       </label>
 
@@ -94,7 +94,7 @@ export default function ContactForm() {
       </button>
       <p className={styles.note}>
         Or write us directly at{" "}
-        <a href="mailto:ventas@salcico.com">ventas@salcico.com</a>. Our teams
+        <a href="mailto:sales@salcico.com">sales@salcico.com</a>. Our teams
         typically reply within minutes.
       </p>
     </form>

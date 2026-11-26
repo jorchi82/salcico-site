@@ -482,7 +482,8 @@
 /* ---------------- BRANDS ---------------- */
 .brandGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  /* ponytail: auto-fit so one brand fills the row and new brands slot in */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
@@ -605,6 +606,12 @@
   align-items: center;
   min-height: 84px;
   transition: background 0.25s ease, color 0.25s ease;
+}
+/* ponytail: lone last tile spans the row so 10 items don't leave a gap */
+@media (min-width: 861px) {
+  .industryItem:last-child:nth-child(3n + 1) {
+    grid-column: 1 / -1;
+  }
 }
 .industryItem:hover {
   background: var(--bg-elev);

@@ -4,6 +4,9 @@ import HeroMedia from "@/components/HeroMedia";
 import CountUp from "@/components/CountUp";
 import styles from "./page.module.css";
 
+// Maintenance division is run through T2W (client request, 23-nov-2026)
+const T2W_URL = "https://t2w.com.mx";
+
 // Order agreed with client: Oil&Gas → Supplies → Maintenance → Logistics → Green → Cybersecurity
 const DIVISIONS = [
   {
@@ -14,12 +17,13 @@ const DIVISIONS = [
   {
     name: "Supplies",
     img: "/sections/supplies.jpg",
-    desc: "An extension of your procurement team. Outsourcing and just-in-time supply for any industrial or commercial requirement.",
+    desc: "Project procurement for large industrial programs: sourcing, expediting and just-in-time delivery, from specification to site.",
   },
   {
     name: "Maintenance",
     img: "/sections/maintenance.jpg",
-    desc: "General and specialized physical, structural and operational maintenance programs that keep facilities and equipment running.",
+    desc: "Turnkey maintenance programs for plants, facilities and critical equipment: electrical, structural and operational.",
+    href: T2W_URL,
   },
   {
     name: "Logistics",
@@ -68,15 +72,11 @@ const BRANDS = [
     scope: "Latin America distributor",
     desc: "Cast, forged, ball, butterfly and cryogenic valves for onshore, subsea, LNG, refining, power and nuclear applications.",
   },
-  {
-    name: "FF Coyard",
-    scope: "Worldwide distributor",
-    desc: "Specialists in special standards and alloys, backed by agreements with world-recognized manufacturers.",
-  },
 ];
 
 const INDUSTRIES = [
   "Oil & Gas",
+  "Mining",
   "Power Gen",
   "Marine",
   "Renewable",
@@ -88,7 +88,7 @@ const INDUSTRIES = [
 ];
 
 const STATS = [
-  { num: "10+", lab: "Years in market" },
+  { num: "15+", lab: "Years in market" },
   { num: "3", lab: "Global offices" },
   { num: "5", lab: "Countries served" },
   { num: "68+", lab: "Partner companies" },
@@ -128,9 +128,9 @@ export default function Home() {
               <span className={styles.heroCardLabel}>What we do</span>
               <div className={styles.heroCardTitle}>
                 <span>
-                  Just-in-time
+                  Industrial projects,
                   <br />
-                  industrial supply
+                  end to end
                 </span>
                 <span className={styles.heroCardArrow} aria-hidden="true">→</span>
               </div>
@@ -164,7 +164,8 @@ export default function Home() {
                 outsourcing schemes.
               </p>
               <p className="lead">
-                With more than a decade in the market, we bring purchasing and
+                Operating in Mexico since 2009 and in the United States since
+                2014, we bring purchasing and
                 service expertise to every engagement — a differentiated mix of
                 products, services and solutions built around your specific
                 requirements. We are specialists in special standards and
@@ -193,7 +194,8 @@ export default function Home() {
             {DIVISIONS.map((d, i) => (
               <a
                 key={d.name}
-                href={`/contact?division=${encodeURIComponent(d.name)}`}
+                href={d.href || `/contact?division=${encodeURIComponent(d.name)}`}
+                {...(d.href && { target: "_blank", rel: "noopener noreferrer" })}
                 className={styles.divCard}
               >
                 <div
@@ -323,26 +325,25 @@ export default function Home() {
             </p>
           </Reveal>
           <Reveal className={styles.brochureGrid}>
+            {/* ponytail: 2023 PDF pulled (named a competitor, Tokyo, tools); swap in the new deck when it arrives */}
             <a
               className={styles.brochureCard}
-              href="/brochures/salcico-company-profile.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="mailto:sales@salcico.com?subject=Corporate%20presentation%20request"
             >
               <span className={styles.brochureType}>PDF · Company profile</span>
               <h3 className={styles.brochureName}>
                 SALCICO Group — Corporate Presentation
               </h3>
-              <span className={styles.brochureDl}>Download →</span>
+              <span className={styles.brochureDl}>Request the latest version →</span>
             </a>
             <div className={`${styles.brochureCard} ${styles.brochureSoon}`}>
               <span className={styles.brochureType}>Coming soon</span>
               <h3 className={styles.brochureName}>
-                Product catalogs &amp; datasheets
+                Capabilities &amp; project references
               </h3>
               <span className={styles.divDesc}>
-                Division-specific brochures will be published here as they
-                become available.
+                Division capabilities and project case studies will be
+                published here as they become available.
               </span>
             </div>
           </Reveal>
@@ -359,13 +360,13 @@ export default function Home() {
                 Let&apos;s build operational efficiency together.
               </h2>
               <p className="lead">
-                Tell us what you need supplied, maintained or delivered. Our
-                teams in Mexico, the U.S. and across LATAM typically reply within
-                minutes.
+                Tell us about your project: what needs to be supplied,
+                maintained or delivered. Our teams in Mexico, the U.S. and
+                Panama typically reply within minutes.
               </p>
               <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
                 <a className="btn" href="/contact">
-                  Get a Quote →
+                  Request a project quote →
                 </a>
                 <a
                   className="arrow-link"
@@ -398,7 +399,7 @@ export default function Home() {
               <a href="/contact">Contact</a>
             </nav>
             <div className={styles.footActions}>
-              <a href="mailto:ventas@salcico.com">ventas@salcico.com</a>
+              <a href="mailto:sales@salcico.com">sales@salcico.com</a>
               <a
                 href="https://api.whatsapp.com/send?phone=18325740328"
                 target="_blank"
