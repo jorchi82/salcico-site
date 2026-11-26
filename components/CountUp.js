@@ -9,10 +9,10 @@ import { useEffect, useRef, useState } from "react";
  */
 export default function CountUp({ value, duration = 1600 }) {
   const ref = useRef(null);
-  const [display, setDisplay] = useState(0);
-
   const target = parseInt(String(value).replace(/\D/g, ""), 10) || 0;
   const suffix = String(value).replace(/[0-9]/g, "");
+  // ponytail: server HTML carries the real number (crawlers, AI bots, no-JS); the client resets to 0 below the fold and counts up
+  const [display, setDisplay] = useState(target);
 
   useEffect(() => {
     const el = ref.current;
@@ -21,10 +21,8 @@ export default function CountUp({ value, duration = 1600 }) {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (prefersReduced) {
-      setDisplay(target);
-      return;
-    }
+    if (prefersReduced) return;
+    setDisplay(0);
 
     let raf;
     let started = false;

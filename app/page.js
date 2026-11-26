@@ -22,23 +22,23 @@ const DIVISIONS = [
   {
     name: "Maintenance",
     img: "/sections/maintenance.jpg",
-    desc: "Turnkey maintenance programs for plants, facilities and critical equipment: electrical, structural and operational.",
+    desc: "Turnkey maintenance programs for plants and critical equipment: electrical, structural and operational.",
     partner: { name: "T2W", url: T2W_URL },
   },
   {
     name: "Logistics",
     img: "/sections/logistics.jpg",
-    desc: "End-to-end logistics for purchasing departments — our own fleet or specialized courier, delivered exactly where you need it.",
+    desc: "End-to-end logistics for purchasing departments, by our own fleet or a specialized courier, straight to your site.",
   },
   {
     name: "Green",
     img: "/sections/green.jpg",
-    desc: "Sustainable solutions that help partners reduce environmental impact and carbon footprint through technologies that work.",
+    desc: "Sustainable solutions that help clients reduce their environmental impact and carbon footprint.",
   },
   {
     name: "Cybersecurity",
     img: "/sections/cybersecurity.jpg",
-    desc: "Industrial cybersecurity through our Vizenet line — OT/IT convergence, tank security, Grid Code compliance and electrical studies.",
+    desc: "Industrial cybersecurity through our Vizenet line: OT/IT convergence, tank security, Grid Code compliance and electrical studies.",
   },
 ];
 
@@ -146,7 +146,7 @@ export default function Home() {
           <Reveal className={styles.about}>
             <div>
               <p className="eyebrow" style={{ marginBottom: 20 }}>
-                Salcico Group
+                SALCICO Group
               </p>
               <h2 className="h2">
                 Operational
@@ -158,18 +158,17 @@ export default function Home() {
             </div>
             <div className={styles.aboutBody}>
               <p className="lead">
-                GRUPO SALCICO is a firm with offices in Mexico City, Houston and
-                Panama, helping public and private clients build better value and
+                SALCICO Group is a firm with offices in Mexico City, Houston and
+                Panama, helping public and private clients gain value and
                 operational efficiency through just-in-time solutions and
                 outsourcing schemes.
               </p>
               <p className="lead">
                 Operating in Mexico since 2009 and in the United States since
-                2014, we bring purchasing and
-                service expertise to every engagement — a differentiated mix of
-                products, services and solutions built around your specific
-                requirements. We are specialists in special standards and
-                alloys, with agreements with world-recognized manufacturers.
+                2014, we bring purchasing and service expertise to every
+                engagement, with products and services built around each
+                project's requirements. We focus on special standards and
+                alloys, backed by agreements with world-recognized manufacturers.
               </p>
               <a href="#divisions" className="arrow-link">
                 Explore our divisions →
@@ -185,8 +184,7 @@ export default function Home() {
           <Reveal className={styles.divHead}>
             <h2 className="h2">What we do</h2>
             <p className="lead" style={{ maxWidth: "38ch" }}>
-              Six integrated business units, one accountable partner across the
-              industrial value chain.
+              Six business units, one point of contact for the whole project.
             </p>
           </Reveal>
 
@@ -198,7 +196,7 @@ export default function Home() {
                   style={{ backgroundImage: `url(${d.img})` }}
                   aria-hidden="true"
                 />
-                <span className={styles.divNum}>0{i + 1}</span>
+                <span className={styles.divNum}>{`0${i + 1}`}</span>
                 <p className={styles.divDesc}>{d.desc}</p>
                 {d.partner && (
                   <p className={styles.divPartner}>
@@ -229,8 +227,8 @@ export default function Home() {
           <Reveal className={styles.divHead}>
             <h2 className="h2">Brands we represent</h2>
             <p className="lead" style={{ maxWidth: "40ch" }}>
-              Official distribution backed by agreements with world-recognized
-              manufacturers in special standards and alloys.
+              Authorized distribution under direct agreements with the
+              manufacturers.
             </p>
           </Reveal>
           <Reveal className={styles.brandGrid}>
@@ -326,10 +324,9 @@ export default function Home() {
       <section id="brochures" className="section">
         <div className="container">
           <Reveal className={styles.divHead}>
-            <h2 className="h2">Brochures &amp; downloads</h2>
+            <h2 className="h2">Brochures</h2>
             <p className="lead" style={{ maxWidth: "40ch" }}>
-              Company profile and product material — download or request the
-              latest version from our team.
+              Company profile and product material, sent on request.
             </p>
           </Reveal>
           <Reveal className={styles.brochureGrid}>
@@ -340,7 +337,7 @@ export default function Home() {
             >
               <span className={styles.brochureType}>PDF · Company profile</span>
               <h3 className={styles.brochureName}>
-                SALCICO Group — Corporate Presentation
+                SALCICO Group corporate presentation
               </h3>
               <span className={styles.brochureDl}>Request the latest version →</span>
             </a>

@@ -16,7 +16,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata = {
-  title: "SALCICO Group — Industrial Supply & Services for Oil & Gas",
+  title: "SALCICO Group | Industrial Supply & Services for Oil & Gas",
   description:
     "Project supply, maintenance and logistics for oil & gas, mining and energy. Offices in Mexico City, Houston and Panama serving clients across the Americas.",
 };
