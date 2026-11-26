@@ -4,7 +4,7 @@ import HeroMedia from "@/components/HeroMedia";
 import CountUp from "@/components/CountUp";
 import styles from "./page.module.css";
 
-// Maintenance division is run through T2W (client request, 23-nov-2026)
+// Maintenance card names T2W with its own link; the card itself still opens /contact (client, 23-nov-2026)
 const T2W_URL = "https://t2w.com.mx";
 
 // Order agreed with client: Oil&Gas → Supplies → Maintenance → Logistics → Green → Cybersecurity
@@ -23,7 +23,7 @@ const DIVISIONS = [
     name: "Maintenance",
     img: "/sections/maintenance.jpg",
     desc: "Turnkey maintenance programs for plants, facilities and critical equipment: electrical, structural and operational.",
-    href: T2W_URL,
+    partner: { name: "T2W", url: T2W_URL },
   },
   {
     name: "Logistics",
@@ -192,12 +192,7 @@ export default function Home() {
 
           <Reveal className={styles.divGrid}>
             {DIVISIONS.map((d, i) => (
-              <a
-                key={d.name}
-                href={d.href || `/contact?division=${encodeURIComponent(d.name)}`}
-                {...(d.href && { target: "_blank", rel: "noopener noreferrer" })}
-                className={styles.divCard}
-              >
+              <div key={d.name} className={styles.divCard}>
                 <div
                   className={styles.divCardImg}
                   style={{ backgroundImage: `url(${d.img})` }}
@@ -205,11 +200,24 @@ export default function Home() {
                 />
                 <span className={styles.divNum}>0{i + 1}</span>
                 <p className={styles.divDesc}>{d.desc}</p>
+                {d.partner && (
+                  <p className={styles.divPartner}>
+                    Delivered through {d.partner.name} ·{" "}
+                    <a href={d.partner.url} target="_blank" rel="noopener noreferrer">
+                      {d.partner.url.replace("https://", "")} ↗
+                    </a>
+                  </p>
+                )}
                 <h3 className={styles.divName}>
-                  {d.name}
+                  <a
+                    href={`/contact?division=${encodeURIComponent(d.name)}`}
+                    className={styles.divLink}
+                  >
+                    {d.name}
+                  </a>
                   <span className={styles.divArrow} aria-hidden="true">→</span>
                 </h3>
-              </a>
+              </div>
             ))}
           </Reveal>
         </div>

@@ -247,6 +247,29 @@
   color: var(--muted);
   line-height: 1.55;
 }
+/* Stretched link: the whole card opens /contact; the partner link sits above it */
+.divLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.divCard:focus-within {
+  background: var(--bg-elev);
+}
+.divPartner {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  color: var(--muted);
+}
+.divPartner a {
+  color: var(--accent-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.divPartner a:hover {
+  color: var(--fg);
+}
 @media (max-width: 860px) {
   .divGrid {
     grid-template-columns: 1fr;
